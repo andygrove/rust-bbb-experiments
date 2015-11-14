@@ -2,4 +2,3 @@
 
 Experimenting with Rust on the Beaglebone Black
 
-foo
