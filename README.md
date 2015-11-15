@@ -12,8 +12,17 @@ NOTE: I don't have anything working yet. I'm learning from https://github.com/po
 
 ## Compiling projects
 
+NOTE: need to manually deploy ~/.cargo/config with these contents
+
+```
+[target.arm-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
+```
 
 ```
 docker run -t -i -v `pwd`:/source andygrove/rust_bbb
+cd /source
+cargo build --target=arm-linux-gnueabihf-gcc
+
 ```
 
