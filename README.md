@@ -33,3 +33,9 @@ cargo build --target=arm-linux-gnueabihf-gcc
 
 ```
 
+## Deploy to Beaglebone
+
+```
+scp target/arm-linux-gnueabihf/blink-led root@192.168.7.2:
+```
+
