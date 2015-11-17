@@ -11,9 +11,9 @@ fn main() {
 
     // turn LED off
     led.with_exported(|| {
-        my_led.set_direction(Direction::Out).unwrap();
-	    my_led.set_value(0).unwrap();
-    });
+        led.set_direction(Direction::Out).unwrap();
+	led.set_value(0).unwrap();
+    }).unwrap();
 
     loop {
 
@@ -23,16 +23,16 @@ fn main() {
             trigger.set_value(1).unwrap();
             sleep_ms(10);
             trigger.set_value(0).unwrap();
-        });
+        }).unwrap();
 
         let count = 0;
         loop {
             echo.with_exported(|| {
                 echo.set_direction(Direction::In).unwrap();
                 let value = echo.get_value().unwrap();
-                println!("Echo: {}", echo);
+                println!("Echo: {}", value);
                 sleep_ms(100);
-            })
+            }).unwrap();
         }
 
     }
