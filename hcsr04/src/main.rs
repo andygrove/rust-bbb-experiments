@@ -12,17 +12,28 @@ fn main() {
     // turn LED off
     led.with_exported(|| {
         my_led.set_direction(Direction::Out).unwrap();
-	my_led.set_value(0).unwrap();
+	    my_led.set_value(0).unwrap();
     });
 
-    
+    loop {
 
+        // trigger
+        trigger.with_exported(|| {
+            trigger.set_direction(Direction::Out).unwrap();
+            trigger.set_value(1).unwrap();
+            sleep_ms(10);
+            trigget.set_value(0).unwrap();
+        });
 
+        let count = 0;
         loop {
-            my_led.set_value(0).unwrap();
-            sleep_ms(duration);
-            my_led.set_value(1).unwrap();
-            sleep_ms(duration);
+            echo.with_exported(|| {
+                echo.set_direction(Direction.In).unwrap();
+                let value = echo.get_value().unwrap();
+                println!("Echo: {}", echo);
+                sleep_ms(100);
+            })
         }
-    }).unwrap();
+
+    }
 }

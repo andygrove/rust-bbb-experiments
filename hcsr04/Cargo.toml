@@ -2,3 +2,6 @@
 name = "hcsr04"
 version = "0.1.0"
 authors = ["Andy Grove <andygrove73@gmail.com>"]
+
+[dependencies]
+sysfs_gpio = "*"
