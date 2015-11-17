@@ -5,19 +5,15 @@ use std::thread::sleep_ms;
 
 fn main() {
 
-    let led = Pin::new(30);
+    //let led     = Pin::new(30);
     let trigger = Pin::new(31);
-    let echo = Pin::new(48);
+    let echo    = Pin::new(48);
 
-    // turn LED off
-    led.with_exported(|| {
-        led.set_direction(Direction::Out).unwrap();
-	led.set_value(0).unwrap();
-    }).unwrap();
 
     loop {
 
         // trigger
+        println!("Trigger");
         trigger.with_exported(|| {
             trigger.set_direction(Direction::Out).unwrap();
             trigger.set_value(1).unwrap();
