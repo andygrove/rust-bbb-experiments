@@ -6,9 +6,8 @@ use std::time::Duration;
 
 fn main() {
 
-    //let led     = Pin::new(30);
-    let trigger = Pin::new(31);
-    let echo    = Pin::new(48);
+    let trigger = Pin::new(62);
+    let echo    = Pin::new(63);
 
     loop {
 
@@ -24,6 +23,8 @@ fn main() {
         }).unwrap();
 
         echo.with_exported(|| {
+
+            echo.set_direction(Direction::In).unwrap();
 
             // wait for echo to go high
             println!("Waiting for ECHO high");
