@@ -4,10 +4,20 @@ use sysfs_gpio::{Direction, Pin};
 use std::thread::sleep_ms;
 
 fn main() {
-    let my_led = Pin::new(30); // GPIO 30 on BBB
-    let duration = 200;
-    my_led.with_exported(|| {
+
+    let led = Pin::new(30);
+    let trigger = Pin::new(31);
+    let echo = Pin::new(48);
+
+    // turn LED off
+    led.with_exported(|| {
         my_led.set_direction(Direction::Out).unwrap();
+	my_led.set_value(0).unwrap();
+    });
+
+    
+
+
         loop {
             my_led.set_value(0).unwrap();
             sleep_ms(duration);
